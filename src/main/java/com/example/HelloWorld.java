@@ -1,6 +1,7 @@
 package com.example;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,15 @@ public class HelloWorld extends HttpServlet {
         out.println("WebAppServlet Executed");
         out.flush();
         out.close();*/
+
+        Cookie cookie = new Cookie("zhang", "hello cookie");
+        //cookie.setSecure(true);
+        cookie.setVersion(33);
+        cookie.setHttpOnly(true);
+        cookie.setComment("this is my cookie");
+        cookie.setValue("hi cookie");
+        response.addCookie(cookie);
+
         response.setContentType("text/html");
         response.getWriter().print("<h1><font color=green>Simple Servlet ran successfully</font></h1>" + "Powered by zhang");
     }
